@@ -19,9 +19,9 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   console.log('A User Connected');
 
-  socket.on('shapeValues', function(x, y){
-    console.log(x + ' ' + y);
-    io.emit('update', x, y);
+  socket.on('moveShape', function(id, x, y){
+    console.log(id + ' ' + x + ' ' + y)
+    io.emit('update', id, x, y);
   });
 });
 

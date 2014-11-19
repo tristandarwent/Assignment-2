@@ -8,8 +8,12 @@ jQuery(function($) {
     var moveX, moveY;
     var distX, distY;
 
-    $("body").append("<div class='box shape'></div>");
-    $("body").append("<div class='circle shape'></div>");
+    var idNum = 1;
+
+
+    $('body').append("<div class='box shape' id='shape" + idNum + "'></div>");
+    idNum++;
+    $('body').append("<div class='circle shape' id='shape" + idNum + "'></div>");
 
     $('.shape').bind('mousedown', function(e1){
 
@@ -31,7 +35,9 @@ jQuery(function($) {
             $(this).css('left', newX);
             $(this).css('top', newY);
 
-            socket.emit('shapeValues', newX, newY);
+            var shapeId = $(this).attr('id');
+
+            socket.emit('moveShape', shapeId, newX, newY);
         });
     });
 
@@ -39,8 +45,9 @@ jQuery(function($) {
         $('.shape').unbind('mousemove');
     });
 
-    socket.on('update', function(x, y){
-
+    socket.on('update', function(id, x, y){
+        $('#' + id).css('left', x);
+        $('#' + id).css('top', y);
     });
 
 });
