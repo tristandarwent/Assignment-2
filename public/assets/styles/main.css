@@ -1,0 +1,19 @@
+body {
+  background: lightblue; }
+
+.shape {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0; }
+
+.box {
+  background: green;
+  width: 100px;
+  height: 100px; }
+
+.circle {
+  background: red;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; }
