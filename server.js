@@ -1,4 +1,3 @@
-
 // Require Native Node.js Libraries
 var express = require('express');
 var app = express();
@@ -7,6 +6,7 @@ http = http.Server(app);
 var io = require('socket.io');
 io = io(http);
 
+// Holds planet positions on server so they are the same for every user
 var coordinates = {
   'mercury' : [],
   'venus' : [],
@@ -22,15 +22,16 @@ var coordinates = {
 app.use('/assets/', express.static(__dirname + '/public/assets/'));
 
 // Route our Home Page
-app.get('/', function(req, res){
+app.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
 // Handle Socket Connection
-io.on('connection', function(socket){
+io.on('connection', function(socket) {
   
   console.log('A User Connected');
 
+  // Sets positions of planets to newly connected users with coordinates stored in array in server, also hiding the label for each
   io.emit('update', 'mercury', coordinates.mercury[0], coordinates.mercury[1]);
   io.emit('updateLabel', 'mercury');
   io.emit('update', 'venus', coordinates.venus[0], coordinates.venus[1]);
@@ -48,21 +49,21 @@ io.on('connection', function(socket){
   io.emit('update', 'neptune', coordinates.neptune[0], coordinates.neptune[1]);
   io.emit('updateLabel', 'neptune');
 
-  socket.on('moveShape', function(id, x, y){
-    console.log(id + ' ' + x + ' ' + y)
+  // Sends planet position changes main.js
+  socket.on('moveShape', function(id, x, y) {
     io.emit('update', id, x, y);
     coordinates[id][0] = x;
     coordinates[id][1] = y;
-    console.log(coordinates.earth[0]);
   });
 
-  socket.on('removeLabel', function(id){
+  // Sends label id to hide to main.js
+  socket.on('removeLabel', function(id) {
     io.emit('updateLabel', id);
   });
 });
 
 // Start Server
-http.listen(process.env.PORT || 3000, process.env.IP || "127.0.0.1", function(){
+http.listen(process.env.PORT || 3000, process.env.IP || "127.0.0.1", function() {
   var addr = http.address();
   console.log("Server started at", addr.address + ":" + addr.port);
 });

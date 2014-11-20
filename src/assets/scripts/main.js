@@ -13,7 +13,7 @@ jQuery(function($) {
     var planetId;
 
     // Calls function when click down is performed on planet class div
-    $('.planet').bind('mousedown', function(e1){
+    $('.planet').bind('mousedown', function(e1) {
 
         // Gets current position of cursor on mousedown
         downX = e1.clientX;
@@ -38,16 +38,8 @@ jQuery(function($) {
             var newX = shapeX + distX;
             var newY = shapeY + distY;
 
-            // Sets the top and left css properties with the new coordinates
-            // $(this).css('left', newX);
-            // $(this).css('top', newY);
-
             // Gets the id of the currently clicked on planet
             planetId = $(this).attr('id');
-
-
-
-            // $('.' + planetId + 'Label').css('opacity', 1);
 
             // Emits id and coordinates of planet while being moved
             socket.emit('moveShape', planetId, newX, newY);
@@ -57,18 +49,22 @@ jQuery(function($) {
     // When mouse button is released, remove the mousemove function from planets
     $(document).mouseup(function() {
         $('.planet').unbind('mousemove');
+
+        // Send to server the id of planet that has been released, to hide label
         socket.emit('removeLabel', planetId);
-        // $('.' + planetId + 'Label').css('opacity', 0);
     });
 
     // Updates planets with new positions through sockets
-    socket.on('update', function(id, x, y){
-        $('.' + id + 'Label').css('opacity', 1);
+    socket.on('update', function(id, x, y) {
         $('#' + id).css('left', x);
         $('#' + id).css('top', y);
+
+        // Shows label of currently moving planet
+        $('.' + id + 'Label').css('opacity', 1);
     });
 
-    socket.on('updateLabel', function(id){
+    // Hides label of planet after it has stopped moving
+    socket.on('updateLabel', function(id) {
         $('.' + id + 'Label').css('opacity', 0);
     });
 });
