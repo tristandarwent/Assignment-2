@@ -1,6 +1,41 @@
 body {
   background-image: url('../images/space.jpg'); }
 
+ul {
+  text-align: center; }
+  ul li {
+    padding-top: 20px;
+    display: inline-block;
+    font-family: Helvetica;
+    font-size: 30px;
+    margin-right: 25px;
+    opacity: 0;
+    text-shadow: 0 0 2px white; }
+
+.mercuryLabel {
+  color: #D3D3D3; }
+
+.venusLabel {
+  color: #D1C5AB; }
+
+.earthLabel {
+  color: #597755; }
+
+.marsLabel {
+  color: #B99B82; }
+
+.jupiterLabel {
+  color: #8C522D; }
+
+.saturnLabel {
+  color: #DCBC79; }
+
+.uranusLabel {
+  color: #C1E7EA; }
+
+.neptuneLabel {
+  color: #4369FE; }
+
 .planet {
   position: absolute;
   cursor: pointer;

@@ -9,6 +9,9 @@ jQuery(function($) {
     var moveX, moveY;
     var distX, distY;
 
+    // Stores currently selected planet
+    var planetId;
+
     // Calls function when click down is performed on planet class div
     $('.planet').bind('mousedown', function(e1){
 
@@ -40,16 +43,21 @@ jQuery(function($) {
             $(this).css('top', newY);
 
             // Gets the id of the currently clicked on planet
-            var shapeId = $(this).attr('id');
+            planetId = $(this).attr('id');
+
+
+
+            $('.' + planetId + 'Label').css('opacity', 1);
 
             // Emits id and coordinates of planet while being moved
-            socket.emit('moveShape', shapeId, newX, newY);
+            socket.emit('moveShape', planetId, newX, newY);
         });
     });
     
     // When mouse button is released, remove the mousemove function from planets
     $(document).mouseup(function() {
         $('.planet').unbind('mousemove');
+        $('.' + planetId + 'Label').css('opacity', 0);
     });
 
     // Updates planets with new positions through sockets
