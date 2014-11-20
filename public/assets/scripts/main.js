@@ -8,17 +8,11 @@ jQuery(function($) {
     var moveX, moveY;
     var distX, distY;
 
-    var idNum = 1;
-
-
-    $('body').append("<div class='box shape' id='shape" + idNum + "'></div>");
-    idNum++;
-    $('body').append("<div class='circle shape' id='shape" + idNum + "'></div>");
-
-    $('.shape').bind('mousedown', function(e1){
+    $('.planet').bind('mousedown', function(e1){
 
         downX = e1.clientX;
         downY = e1.clientY;
+
         var shapeX = parseInt($(this).css('left'));
         var shapeY = parseInt($(this).css('top'));
 
@@ -42,7 +36,7 @@ jQuery(function($) {
     });
 
     $(document).mouseup(function() {
-        $('.shape').unbind('mousemove');
+        $('.planet').unbind('mousemove');
     });
 
     socket.on('update', function(id, x, y){

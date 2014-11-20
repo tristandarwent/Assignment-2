@@ -71,7 +71,7 @@ gulp.task('scripts', function() {
 gulp.task('images', function() {
 
   gulp.src(paths.images)
-    .pipe(imagemin())
+    // .pipe(imagemin())
     .pipe(gulp.dest('./public/assets/images/'))
 
 });
