@@ -12,6 +12,9 @@ ul {
     opacity: 0;
     text-shadow: 0 0 2px white; }
 
+.theSunLabel {
+  color: #C19E03; }
+
 .mercuryLabel {
   color: #D3D3D3; }
 
@@ -39,53 +42,67 @@ ul {
 .planet {
   position: absolute;
   cursor: pointer;
-  top: 300px;
   background-size: contain; }
+
+#theSun {
+  background-image: url('../images/sun.png');
+  top: 100px;
+  left: -450px;
+  width: 700px;
+  height: 700px; }
 
 #mercury {
   background-image: url('../images/mercury.png');
-  left: 50px;
+  top: 415px;
+  left: 190px;
   width: 75px;
   height: 75px; }
 
 #venus {
   background-image: url('../images/venus.png');
-  left: 150px;
+  top: 405px;
+  left: 300px;
   width: 100px;
   height: 100px; }
 
 #earth {
   background-image: url('../images/earth.png');
-  left: 275px;
+  top: 400px;
+  left: 425px;
   width: 110px;
   height: 110px; }
 
 #mars {
   background-image: url('../images/mars.png');
-  left: 400px;
+  top: 412px;
+  left: 565px;
   width: 85px;
   height: 85px; }
 
 #jupiter {
   background-image: url('../images/jupiter.png');
-  left: 525px;
+  top: 325px;
+  left: 675px;
   width: 250px;
   height: 250px; }
 
 #saturn {
   background-image: url('../images/saturn.png');
-  left: 775px;
+  top: 360px;
+  left: 925px;
   width: 200px;
   height: 200px; }
 
 #uranus {
   background-image: url('../images/uranus.png');
-  left: 1000px;
+  top: 415px;
+  left: 1150px;
   width: 100px;
   height: 100px; }
 
 #neptune {
   background-image: url('../images/neptune.png');
-  left: 1150px;
+  top: 415px;
+  left: 1300px;
   width: 100px;
   height: 100px; }

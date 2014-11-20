@@ -8,6 +8,7 @@ io = io(http);
 
 // Holds planet positions on server so they are the same for every user
 var coordinates = {
+  'theSun' : [],
   'mercury' : [],
   'venus' : [],
   'earth' : [],
@@ -32,6 +33,8 @@ io.on('connection', function(socket) {
   console.log('A User Connected');
 
   // Sets positions of planets to newly connected users with coordinates stored in array in server, also hiding the label for each
+  io.emit('movePlanet', 'theSun', coordinates.theSun[0], coordinates.theSun[1]);
+  io.emit('removePlanet', 'theSun');
   io.emit('movePlanet', 'mercury', coordinates.mercury[0], coordinates.mercury[1]);
   io.emit('removePlanet', 'mercury');
   io.emit('movePlanet', 'venus', coordinates.venus[0], coordinates.venus[1]);
