@@ -14,23 +14,11 @@ Crazy Space Planet Moving Adventure is a wonderful experience where you can move
 
 3. Open up terminal and change directories to the newly unpacked “Assignment-2-master”
 
-4. Type in the terminal window
+4. Type in the terminal window ```sudo npm install``` and hit enter. Wait for it to finish installing.
 
-> sudo npm install
+5. Type in ```node server.js``` and hit enter.
 
-and hit enter. Wait for it to finish installing.
-
-5. Type in
-
-> node server.js
-
-and hit enter.
-
-6. Copy the url outputted in terminal after
-
-> Server started at …
-
-and paste it into your browser.
+6. Copy the url outputted in terminal after ```Server started at …``` and paste it into your browser.
 
 7. Sit back and enjoy the experience!
 
@@ -38,11 +26,7 @@ and paste it into your browser.
 
 1. Browse to “Assignment-2-master” in terminal like before.
 
-2. Type in 
-
-> gulp
-
-and it will process all the files.
+2. Type in ```gulp``` and it will process all the files.
 
 ###Technologies
 
