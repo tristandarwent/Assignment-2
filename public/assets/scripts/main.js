@@ -1,7 +1,7 @@
-// Wait for DOM to Load *
+// Wait for DOM to Load
 jQuery(function($) {
     
-    // Create New Socket Connection using Socket.io *
+    // Create New Socket Connection using Socket.io
     var socket = io();
 
     // Variables to hold X and Y positions for dragging the planets
